@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Raucse
 {
-    public class Class1
-    {
-    }
+	public static class Test
+	{
+		public static bool False() => false;
+	}
 }
