@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Raucse
 {
+	/// <summary>
+	/// A pair of two different objects
+	/// </summary>
+	/// <typeparam name="TFirst"></typeparam>
+	/// <typeparam name="TSecond"></typeparam>
 	public class Pair<TFirst, TSecond>
 	{
 		public readonly TFirst First;
 		public readonly TSecond Second;
 
+		/// <summary>
+		/// Constructs a Pair from two values
+		/// </summary>
+		/// <param name="first"></param>
+		/// <param name="second"></param>
 		public Pair(TFirst first, TSecond second)
 		{
 			First = first;
