@@ -76,5 +76,7 @@ namespace Raucse.Extensions
 
             return new Option<decimal>();
         }
+
+        public static bool IsEmpty(this string str) => string.IsNullOrEmpty(str);
     }
 }
