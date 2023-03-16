@@ -11,7 +11,7 @@ namespace Raucse
 	/// </summary>
 	/// <typeparam name="TFirst"></typeparam>
 	/// <typeparam name="TSecond"></typeparam>
-	public class Pair<TFirst, TSecond>
+	public struct Pair<TFirst, TSecond>
 	{
 		public readonly TFirst First;
 		public readonly TSecond Second;
@@ -45,6 +45,16 @@ namespace Raucse
 			return (pair.First, pair.Second);
 		}
 
+		public static implicit operator Pair<TFirst, TSecond>(KeyValuePair<TFirst, TSecond> pair)
+        {
+			return new Pair<TFirst, TSecond>(pair.Key, pair.Value);
+        }
+
+		public static implicit operator KeyValuePair<TFirst, TSecond>(Pair<TFirst, TSecond> pair)
+        {
+			return new KeyValuePair<TFirst, TSecond>(pair.First, pair.Second);
+        }
+
 		/// <summary>
 		/// Allows for deconstruction, simmilar to Tuple deconstruction
 		/// </summary>
@@ -67,5 +77,15 @@ namespace Raucse
 		{
 			return HashCode.Combine(First, Second);
 		}
-	}
+
+        public static bool operator ==(Pair<TFirst, TSecond> left, Pair<TFirst, TSecond> right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Pair<TFirst, TSecond> left, Pair<TFirst, TSecond> right)
+        {
+            return !(left == right);
+        }
+    }
 }
