@@ -27,6 +27,35 @@ namespace Raucse
 			Second = second;
 		}
 
+		/// <summary>
+		/// Implicit conversion from a tuple, to a pair
+		/// </summary>
+		/// <param name="tuple"></param>
+		public static implicit operator Pair<TFirst, TSecond>((TFirst, TSecond) tuple)
+        {
+			return new Pair<TFirst, TSecond>(tuple.Item1, tuple.Item2);
+        }
+
+		/// <summary>
+		/// Implicit conversion from a pair to a tuple
+		/// </summary>
+		/// <param name="pair"></param>
+		public static implicit operator (TFirst, TSecond)(Pair<TFirst, TSecond> pair)
+		{
+			return (pair.First, pair.Second);
+		}
+
+		/// <summary>
+		/// Allows for deconstruction, simmilar to Tuple deconstruction
+		/// </summary>
+		/// <param name="first"></param>
+		/// <param name="second"></param>
+		public void Deconstruct(out TFirst first, out TSecond second)
+		{
+			first = First;
+			second = Second;
+		}
+
 		public override bool Equals(object obj)
 		{
 			return obj is Pair<TFirst, TSecond> pair &&

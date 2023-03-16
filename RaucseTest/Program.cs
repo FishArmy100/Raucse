@@ -7,8 +7,9 @@ namespace RaucseTest
     {
         static void Main(string[] args)
         {
-            Option<string> test = "Hello World!";
-            Console.WriteLine(test.Value);
+            Pair<int, int> pair = (5, 6);
+            (int, int) val = pair;
+            Console.WriteLine(pair.Second);
         }
     }
 }
