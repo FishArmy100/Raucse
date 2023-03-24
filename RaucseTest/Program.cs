@@ -7,9 +7,9 @@ namespace RaucseTest
     {
         static void Main(string[] args)
         {
-            Pair<int, int> pair = (5, 6);
-            (int, int) val = pair;
-            Console.WriteLine(pair.Second);
+            ConsoleHelper.WriteMessage("My Message");
+            ConsoleHelper.WriteWarning("My Warning");
+            ConsoleHelper.WriteError("My Error");
         }
     }
 }
