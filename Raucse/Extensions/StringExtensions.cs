@@ -77,6 +77,47 @@ namespace Raucse.Extensions
             return new Option<decimal>();
         }
 
-        public static bool IsEmpty(this string str) => string.IsNullOrEmpty(str);
+        /// <summary>
+        /// Repeats a string n number of times.
+        /// From: https://www.codingame.com/playgrounds/5113/implementing-repeat-method-for-strings-in-c
+        /// </summary>
+        /// <param name="instr"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static string Repeat(this string instr, int n)
+        {
+            if (n <= 0)
+            {
+                return null;
+            }
+
+            if (string.IsNullOrEmpty(instr) || n == 1)
+            {
+                return instr;
+            }
+
+            return new StringBuilder(instr.Length * n)
+                                    .Insert(0, instr, n)
+                                    .ToString();
+        }
+
+        public static string Surround(this string str, StringSurroundMode mode)
+        {
+            return mode switch
+            {
+                StringSurroundMode.Braces => "{" + str + "}",
+                StringSurroundMode.Brackets => "[" + str + "]",
+                StringSurroundMode.Parens => "(" + str + ")",
+                StringSurroundMode.Angles => "<" + str + ">",
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        public static string Surround(this string str, string surrounder)
+        {
+            return surrounder + str + surrounder;
+        }
+
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
     }
 }

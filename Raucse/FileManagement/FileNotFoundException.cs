@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Raucse.FileManagement
 {
-	class ResourceDoesNotExistException : Exception
-	{
-	}
+    class FileNotFoundException : Exception
+    {
+    }
 }
