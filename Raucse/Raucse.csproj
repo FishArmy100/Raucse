@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Description>Randomly Amassed Utilities for C Sharp Engineering</Description>
@@ -9,6 +10,7 @@
     <PackageProjectUrl />
     <RepositoryUrl>https://github.com/FishArmy100/Raucse</RepositoryUrl>
     <NeutralLanguage />
+    <PackageTags>Utils, Util, Utilities, Functional, File Mannagement</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +18,13 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+	
+  <ItemGroup>
+	  <None Include="..\README.md">
+		  <Pack>True</Pack>
+		  <PackagePath></PackagePath>
+	  </None>
   </ItemGroup>
 
 </Project>
