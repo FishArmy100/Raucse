@@ -7,6 +7,8 @@ using System.IO;
 
 namespace Raucse.FileManagement
 {
+
+    [Obsolete("WARNING: needs to be fixed")]
     public class FolderInfo
     {
         private readonly string m_Path;

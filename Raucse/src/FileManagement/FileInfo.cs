@@ -10,6 +10,7 @@ namespace Raucse.FileManagement
     /// <summary>
     /// Represents a file on disk. When constructed, will automatically generate all subfolders and directories required and the file itself. If the file or directory is deleted, and functions are called on a FileInfo referencing that file, it will throw a FileNotFoundException.
     /// </summary>
+    [Obsolete("WARNING: needs to be fixed")]
     public class FileInfo
     {
         private readonly string m_Path;

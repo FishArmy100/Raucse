@@ -22,19 +22,22 @@ namespace Raucse.FileManagement
         /// <param name="text"></param>
         public static void WriteToFile(string path, string text)
         {
-            FileInfo file = new FileInfo(path);
-            file.Write(text);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            File.Create(path).Dispose();
+            File.WriteAllText(path, text);
         }
 
         /// <summary>
-        /// Gets or or creates a file if it does not exist, and reads all the text from it
+        /// Reads from a file, if it exists
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string ReadFromFile(string path)
+        public static Option<string> ReadFromFile(string path)
         {
-            FileInfo info = new FileInfo(path);
-            return info.Read();
+            if (File.Exists(path))
+                return File.ReadAllText(path);
+
+            return new Option<string>();
         }
     }
 }

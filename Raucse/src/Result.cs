@@ -100,6 +100,11 @@ namespace Raucse
         {
             return Match(ok => new Option<TSuccess>(ok), fail => new Option<TSuccess>());
         }
+
+        public Option<TError> GetErrorOption()
+        {
+            return Match(ok => new Option<TError>(), fail => new Option<TError>(fail));
+        }
     }
 
     public static class ResultExtensions
