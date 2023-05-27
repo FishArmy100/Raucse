@@ -19,4 +19,9 @@
     - `Errors`
     - `ValidResults`
   - `As`?
+- `ICollection`
+  - `IsNullOrEmpty`
+  - `AddRange`
+- Array Extensions 
+  - `Any`
 - Performance Tests
