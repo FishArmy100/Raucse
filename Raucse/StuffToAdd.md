@@ -5,7 +5,17 @@
     - On ok
     - On ok or fail
     - Evaluate 
-  - `ToResult()`
+  - `ToResult`
 - Debugging
   - `Assert`
   - `Panic`
+  - `Test`
+- Option Additions
+  - `ToResult`
+- List Extensions 
+  - `List<Option<T>>`
+    - `ValidOptions`
+  - `List<Result<T, TError>>`
+    - `Errors`
+    - `ValidResults`
+  - `As`?
