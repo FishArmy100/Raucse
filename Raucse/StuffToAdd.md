@@ -1,5 +1,27 @@
 # Stuff To Add
-- IEnumerable of enumerable construction 
-```cs
-List<int> l = new List<int>(list1, list2);
-```
+- Nullable Extensions
+  - `ToOption`
+  - `Match`
+    - On ok
+    - On ok or fail
+    - Evaluate 
+  - `ToResult`
+- Debugging
+  - `Assert`
+  - `Panic`
+  - `Test`
+- Option Additions
+  - `ToResult`
+- List Extensions 
+  - `List<Option<T>>`
+    - `ValidOptions`
+  - `List<Result<T, TError>>`
+    - `Errors`
+    - `ValidResults`
+  - `As`?
+- `ICollection`
+  - `IsNullOrEmpty`
+  - `AddRange`
+- Array Extensions 
+  - `Any`
+- Performance Tests
