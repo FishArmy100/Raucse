@@ -1,5 +1,6 @@
 ﻿using System;
 using Raucse;
+using Raucse.Extensions;
 using Raucse.FileManagement;
 
 namespace RaucseTest
@@ -8,15 +9,7 @@ namespace RaucseTest
     {
         static void Main(string[] args)
         {
-            StringMaker maker = new StringMaker();
-            maker.AppendLine("Here is my List:");
-            maker.TabIn(StringMaker.TabMode.Numbered);
-            maker.AppendLines("Pears", "Apples", "Carrots");
-            maker.Append("Peas");
-            maker.AppendLine(" with Butter");
-
-            ConsoleHelper.WriteMessage(maker.ToString());
-            ConsoleHelper.WriteLine(maker.LineCount.ToString());
+            Console.WriteLine(FileUtils.GetAllDirectories("C:\\dev\\Raucse\\Raucse").Concat("\n"));
         }
     }
 }

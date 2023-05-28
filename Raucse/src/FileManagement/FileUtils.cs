@@ -39,5 +39,37 @@ namespace Raucse.FileManagement
 
             return new Option<string>();
         }
+
+        /// <summary>
+        /// Returns all files in the specified directory, and all sub directories
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetAllFiles(string dir)
+        {
+            foreach (string path in Directory.GetFiles(dir))
+                yield return path;
+
+            foreach (string subdir in Directory.GetDirectories(dir))
+            {
+                foreach (string path in GetAllFiles(subdir))
+                    yield return path;
+            }
+        }
+
+        /// <summary>
+        /// Returns the directory, and all subdirectories of a given path
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> GetAllDirectories(string dir)
+        {
+            yield return dir;
+            foreach (string subdir in Directory.GetDirectories(dir))
+            {
+                foreach (string d in GetAllDirectories(subdir))
+                    yield return d;
+            }
+        }
     }
 }
