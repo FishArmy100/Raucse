@@ -9,7 +9,7 @@ namespace Raucse
     public class NullOptionExeption : Exception { }
 
     /// <summary>
-    /// A object that have a valid, or invalid representation.
+    /// A object that can have a valid or invalid representation.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public struct Option<T>
@@ -115,6 +115,17 @@ namespace Raucse
         public TReturn MatchOrConstruct<TReturn>(Func<T, TReturn> okFunc) where TReturn : new()
         {
             return Match(okFunc, () => new TReturn());
+        }
+
+        /// <summary>
+        /// Converts this option to a result
+        /// </summary>
+        /// <typeparam name="TError">The type of the error</typeparam>
+        /// <param name="onError">Called if the this option does not have a value</param>
+        /// <returns></returns>
+        public Result<T, TError> ToResult<TError>(Func<TError> onError)
+        {
+            return this.Match(ok => new Result<T, TError>(ok), () => new Result<T, TError>(onError()));
         }
 
         public override bool Equals(object obj)
