@@ -29,3 +29,7 @@
 ### Version 1.1.1
 - [ ] Result Extensions:
   - [ ] Propogate results: returns the first error of a result sequence, returns an option
+- [ ] Diagnostics:
+  - [ ] Execution Timer
+  - [ ] Panic?
+  - [ ] Assertion?
