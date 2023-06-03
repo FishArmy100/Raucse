@@ -27,8 +27,16 @@
   - [x] `Any`
 - [x] Performance Tests
 ### Version 1.1.1
-- [ ] Result Extensions:
+- [ ] Result Additions:
   - [ ] Propogate results: returns the first error of a result sequence, returns an option
+  - [ ] Propogate errors: finds the first success
+- [ ] Option Additions:
+  - [ ] `ToNullable`
+- [ ] IEnumerable<Option<T>>:
+  - [ ] FirstValid
+- [ ] IEnumerable<Result<T, TE>>:
+  - [ ] `FirstValid`
+  - [ ] `FirstError`
 - [ ] Diagnostics:
   - [ ] Execution Timer
   - [ ] Panic?
