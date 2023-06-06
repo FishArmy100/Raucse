@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/FishArmy100/Raucse</RepositoryUrl>
     <NeutralLanguage />
     <PackageTags>Utils, Util, Utilities, Functional, File Mannagement</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageReleaseNotes>
 		Added a bunch more extensions especially for nullable types. Fixed a few bugs with the StringMaker class.
 		Removed some of the old file system classes. Added an Experimental folder.
