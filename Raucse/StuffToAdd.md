@@ -30,6 +30,7 @@
 - [ ] Result Additions:
   - [ ] Propogate results: returns the first error of a result sequence, returns an option
   - [ ] Propogate errors: finds the first success
+  - [ ] Way to call a function, and if it throws an exception, return an error, else returns an ok
 - [ ] Option Additions:
   - [ ] `ToNullable`
 - [ ] IEnumerable<Option<T>>:
