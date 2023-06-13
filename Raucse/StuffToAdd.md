@@ -1,27 +1,44 @@
- # Stuff To Add
-- Nullable Extensions
-  - `ToOption`
-  - `Match`
-    - On ok
-    - On ok or fail
-    - Evaluate 
-  - `ToResult`
-- Debugging
-  - `Assert`
-  - `Panic`
-  - `Test`
-- Option Additions
-  - `ToResult`
-- List Extensions 
-  - `List<Option<T>>`
+# Stuff To Add
+## Version 1.1
+- [x] Nullable Extensions
+  - [x] `ToOption`
+  - [x] `Match`
+    - [x] On ok
+    - [x] On ok or fail
+    - [x] Evaluate
+  - [x] `ToResult`
+- [x] Debugging
+  - [x] `Assert`
+  - [x] `Panic`
+  - [x] `Test`
+- [x] Option Additions
+  - [x] `ToResult`
+- [x] List Extensions
+  - [x] `List<Option<T>>`
     - `ValidOptions`
-  - `List<Result<T, TError>>`
-    - `Errors`
-    - `ValidResults`
-  - `As`?
-- `ICollection`
-  - `IsNullOrEmpty`
-  - `AddRange`
-- Array Extensions 
-  - `Any`
-- Performance Tests
+  - [x] `List<Result<T, TError>>`
+    - [x] `Errors`
+    - [x] `ValidResults`
+  - [x] `As`?
+- [x] `ICollection`
+  - [x] `IsNullOrEmpty`
+  - [x] `AddRange`
+- [x] Array Extensions
+  - [x] `Any`
+- [x] Performance Tests
+### Version 1.1.1
+- [ ] Result Additions:
+  - [ ] Propogate results: returns the first error of a result sequence, returns an option
+  - [ ] Propogate errors: finds the first success
+  - [ ] Way to call a function, and if it throws an exception, return an error, else returns an ok
+- [ ] Option Additions:
+  - [ ] `ToNullable`
+- [ ] IEnumerable<Option<T>>:
+  - [ ] FirstValid
+- [ ] IEnumerable<Result<T, TE>>:
+  - [ ] `FirstValid`
+  - [ ] `FirstError`
+- [ ] Diagnostics:
+  - [ ] Execution Timer
+  - [ ] Panic?
+  - [ ] Assertion?
