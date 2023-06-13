@@ -28,5 +28,14 @@ namespace Raucse.Diagnostics
 
             return new Pair<TimeSpan, T>(stopwatch.Elapsed, value);
         }
+
+        public static TimeSpan AverageTime(int count, Action action)
+        {
+            TimeSpan span = new TimeSpan(0);
+            for (int i = 0; i < count; i++)
+                span += Timer.Time(action);
+
+            return span / count;
+        }
     }
 }

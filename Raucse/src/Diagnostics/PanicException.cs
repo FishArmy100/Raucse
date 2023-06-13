@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Raucse.Experimental.Debugging
+namespace Raucse.Diagnostics
 {
     class PanicException : Exception
     {

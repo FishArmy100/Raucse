@@ -109,7 +109,13 @@ namespace Raucse
 
     public static class ResultExtensions
     {
-
+        /// <summary>
+        /// Converts a collection of results into a result of either all the aggrigated successes, or all the aggrigated errors. If there are any errors, will return the errors
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="self"></param>
+        /// <returns></returns>
         public static Result<List<TSuccess>, List<TError>> AggregateResults<TSuccess, TError>(this IEnumerable<Result<TSuccess, List<TError>>> self)
         {
             List<TSuccess> successes = new List<TSuccess>();
@@ -125,6 +131,66 @@ namespace Raucse
                 return errors;
 
             return successes;
+        }
+
+        /// <summary>
+        /// Will return the first result that is a success
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        public static Option<TSuccess> FirstSuccess<TSuccess, TError>(this IEnumerable<Result<TSuccess, TError>> results)
+        {
+            foreach(var result in results)
+            {
+                if (result.IsOk())
+                    return result.Value;
+            }
+
+            return new Option<TSuccess>();
+        }
+
+        /// <summary>
+        /// Will return the first result that is an error
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        public static Option<TError> FirstError<TSuccess, TError>(this IEnumerable<Result<TSuccess, TError>> results)
+        {
+            foreach (var result in results)
+            {
+                if (result.IsError())
+                    return result.Error;
+            }
+
+            return new Option<TError>();
+        }
+
+        /// <summary>
+        /// Returns true if any of the results in the enumerable is an error
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        public static bool AnyErrors<TSuccess, TError>(this IEnumerable<Result<TSuccess, TError>> results)
+        {
+            return results.FirstError().HasValue();
+        }
+
+        /// <summary>
+        /// Returns true if any of the results in the enumerable is an success
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="results"></param>
+        /// <returns></returns>
+        public static bool AnySuccesses<TSuccess, TError>(this IEnumerable<Result<TSuccess, TError>> results)
+        {
+            return results.FirstSuccess().HasValue();
         }
     }
 }
