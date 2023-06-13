@@ -8,6 +8,12 @@ namespace Raucse.Extensions
 {
     public static class StringExtensions
     {
+        /// <summary>
+        /// Concatinates a enumerable of strings with a given seperator
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="seperator"></param>
+        /// <returns></returns>
         public static string Concat(this IEnumerable<string> list, string seperator = " ")
         {
             string str = "";
@@ -22,6 +28,11 @@ namespace Raucse.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Sets the first char of the string to lower case
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static string FirstCharToLowerCase(this string str)
         {
             if (!string.IsNullOrEmpty(str) && char.IsUpper(str[0]))
@@ -30,6 +41,11 @@ namespace Raucse.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Removes all whitespace of a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string RemoveWhitespace(this string input)
         {
             return new string(input.ToCharArray()
@@ -37,6 +53,24 @@ namespace Raucse.Extensions
                 .ToArray());
         }
 
+        /// <summary>
+        /// Parses a string to a short
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static Option<short> ToShort(this string str)
+        {
+            if (short.TryParse(str, out short result))
+                return result;
+
+            return new Option<short>();
+        }
+
+        /// <summary>
+        /// Parses a string to an int
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static Option<int> ToInt(this string str)
         {
             if (int.TryParse(str, out int result))
@@ -45,6 +79,11 @@ namespace Raucse.Extensions
             return new Option<int>();
         }
 
+        /// <summary>
+        /// Parses a string to a long
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static Option<long> ToLong(this string str)
         {
             if (long.TryParse(str, out long result))
@@ -53,6 +92,50 @@ namespace Raucse.Extensions
             return new Option<long>();
         }
 
+        /// <summary>
+        /// Parses a string to a ushort
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static Option<ushort> ToUShort(this string str)
+        {
+            if (ushort.TryParse(str, out ushort result))
+                return result;
+
+            return new Option<ushort>();
+        }
+
+        /// <summary>
+        /// Parses a string to a uint
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static Option<uint> ToUInt(this string str)
+        {
+            if (uint.TryParse(str, out uint result))
+                return result;
+
+            return new Option<uint>();
+        }
+
+        /// <summary>
+        /// Parses a string to a ulong
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static Option<ulong> ToULong(this string str)
+        {
+            if (ulong.TryParse(str, out ulong result))
+                return result;
+
+            return new Option<ulong>();
+        }
+
+        /// <summary>
+        /// Parses a string to a float
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static Option<float> ToFloat(this string str)
         {
             if (float.TryParse(str, out float result))
@@ -61,6 +144,11 @@ namespace Raucse.Extensions
             return new Option<float>();
         }
 
+        /// <summary>
+        /// Parses a string to a double
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static Option<double> ToDouble(this string str)
         {
             if (double.TryParse(str, out double result))
@@ -69,6 +157,11 @@ namespace Raucse.Extensions
             return new Option<double>();
         }
 
+        /// <summary>
+        /// Parses a string to a decimal
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static Option<decimal> ToDecimal(this string str)
         {
             if (decimal.TryParse(str, out decimal result))
@@ -101,6 +194,12 @@ namespace Raucse.Extensions
                                     .ToString();
         }
 
+        /// <summary>
+        /// Surrounds a string with charactors of the given StringSurroundMode
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
         public static string Surround(this string str, StringSurroundMode mode)
         {
             return mode switch
@@ -113,11 +212,22 @@ namespace Raucse.Extensions
             };
         }
 
+        /// <summary>
+        /// Adds the surrounder string on each side to the source string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="surrounder"></param>
+        /// <returns></returns>
         public static string Surround(this string str, string surrounder)
         {
             return surrounder + str + surrounder;
         }
 
+        /// <summary>
+        /// Checks to see if a string is null or empty
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
     }
 }

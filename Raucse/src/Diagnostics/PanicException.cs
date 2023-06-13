@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Raucse.FileManagement
+namespace Raucse.Diagnostics
 {
-    class FileNotFoundException : Exception
+    class PanicException : Exception
     {
+        public PanicException(string message) : base(message) { }
     }
 }

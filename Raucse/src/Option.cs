@@ -9,7 +9,7 @@ namespace Raucse
     public class NullOptionExeption : Exception { }
 
     /// <summary>
-    /// A object that have a valid, or invalid representation.
+    /// A object that can have a valid or invalid representation.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public struct Option<T>
@@ -117,6 +117,17 @@ namespace Raucse
             return Match(okFunc, () => new TReturn());
         }
 
+        /// <summary>
+        /// Converts this option to a result
+        /// </summary>
+        /// <typeparam name="TError">The type of the error</typeparam>
+        /// <param name="onError">Called if the this option does not have a value</param>
+        /// <returns></returns>
+        public Result<T, TError> ToResult<TError>(Func<TError> onError)
+        {
+            return Match(ok => new Result<T, TError>(ok), () => new Result<T, TError>(onError()));
+        }
+
         public override bool Equals(object obj)
         {
             return obj is Option<T> option &&
@@ -150,6 +161,62 @@ namespace Raucse
         public static string MatchOrEmpty(this Option<string> option)
         {
             return option.Match(ok => ok, () => "");
+        }
+
+        /// <summary>
+        /// Returns the first option that has a valid value
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static Option<T> FirstValid<T>(this IEnumerable<Option<T>> options)
+        {
+            foreach(var option in options)
+            {
+                if (option.HasValue())
+                    return option.Value;
+            }
+
+            return new Option<T>();
+        }
+
+        /// <summary>
+        /// Returns all of the valid options in the enumerable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static List<T> AllValids<T>(this IEnumerable<Option<T>> options)
+        {
+            List<T> valids = new List<T>();
+            foreach(var option in options)
+            {
+                option.Match(ok => valids.Add(ok));
+            }
+
+            return valids;
+        }
+
+        /// <summary>
+        /// Returns true if any of the options is valid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static bool AnyValid<T>(this IEnumerable<Option<T>> options)
+        {
+            return options.FirstValid().HasValue();
+        }
+
+        /// <summary>
+        /// returns true if any of the options is invalid
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public static bool AnyInvalid<T>(this IEnumerable<Option<T>> options)
+        {
+            return !options.AnyValid();
         }
     }
 }
