@@ -27,12 +27,27 @@
   - [x] `Any`
 - [x] Performance Tests
 ### Version 1.1.1
-- [ ] Result Additions:
+- [x] Result Additions:
   - [x] Propogate results: returns the first error of a result sequence, returns an option
   - [x] Propogate errors: finds the first success
+  - [x] All Valids
+  - [x] All Errors
 - [x] IEnumerable<Option<T>>:
   - [x] FirstValid
+  - [x] AllValid
 - [x] Diagnostics:
   - [x] Execution Timer
   - [x] Panic
   - [x] Assertion
+## Version 1.2
+- [ ] String reader
+  - [ ] Match
+  - [ ] Peek
+  - [ ] CheckSequence
+  - [ ] MatchSequence
+  - [ ] Current
+  - [ ] IsAtEnd
+- [ ] Result<T, E>
+  - [ ] Aggrigate results with single errors
+- [ ] Assertions:
+  - [ ] Just have a condition, no message
