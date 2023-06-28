@@ -40,14 +40,15 @@
   - [x] Panic
   - [x] Assertion
 ## Version 1.2
-- [ ] String reader
-  - [ ] Match
-  - [ ] Peek
-  - [ ] CheckSequence
-  - [ ] MatchSequence
-  - [ ] Current
-  - [ ] IsAtEnd
+- [x] String reader
+  - [x] Match
+  - [x] Peek
+  - [x] CheckSequence
+  - [x] MatchSequence
+  - [x] Current
+  - [x] IsAtEnd
 - [ ] Result<T, E>
-  - [ ] Aggrigate results with single errors
-- [ ] Assertions:
-  - [ ] Just have a condition, no message
+  - [x] Aggrigate results with single errors
+  - [x] MatchOrThrow where E is Exception
+- [x] Assertions:
+  - [x] Just have a condition, no message
