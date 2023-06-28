@@ -27,7 +27,7 @@ namespace Raucse.Diagnostics
                 Panic($"Assertion failed: {message}");
         }
         /// <summary>
-        /// If the condition is not true, panics
+        /// If the condition is not true, panics 
         /// </summary>
         /// <param name="condition"></param>
         public static void Assert(bool condition)
