@@ -11,7 +11,7 @@ namespace Raucse
     /// </summary>
     /// <typeparam name="TSuccess"></typeparam>
     /// <typeparam name="TError"></typeparam>
-    public class Result<TSuccess, TError>
+    public struct Result<TSuccess, TError>
     {
         private readonly Either<TSuccess, TError> m_Value;
 
@@ -134,6 +134,30 @@ namespace Raucse
         }
 
         /// <summary>
+        /// Converts a collection of results into a result of either all the aggrigated successes, or all the aggrigated errors. If there are any errors, will return the errors
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        public static Result<List<TSuccess>, List<TError>> AggrigateResults<TSuccess, TError>(this IEnumerable<Result<TSuccess, TError>> self)
+        {
+            List<TSuccess> successes = new List<TSuccess>();
+            List<TError> errors = new List<TError>();
+            foreach (var result in self)
+            {
+                result.Match(
+                    ok => successes.Add(ok),
+                    fail => errors.Add(fail));
+            }
+
+            if (errors.Any())
+                return errors;
+
+            return successes;
+        }
+
+        /// <summary>
         /// Will return the first result that is a success
         /// </summary>
         /// <typeparam name="TSuccess"></typeparam>
@@ -191,6 +215,32 @@ namespace Raucse
         public static bool AnySuccesses<TSuccess, TError>(this IEnumerable<Result<TSuccess, TError>> results)
         {
             return results.FirstSuccess().HasValue();
+        }
+
+        /// <summary>
+        /// If is error, will throw it as an exception, else will cal the ok func
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <typeparam name="TReturn"></typeparam>
+        /// <param name="result"></param>
+        /// <param name="okFunc"></param>
+        /// <returns></returns>
+        public static TReturn MatchOrThrow<TSuccess, TError, TReturn>(this Result<TSuccess, TError> result, Func<TSuccess, TReturn> okFunc) where TError : Exception
+        {
+            return result.Match(okFunc, error => throw error);
+        }
+
+        /// <summary>
+        /// If is error, will throw it as an exception, else will cal the ok func
+        /// </summary>
+        /// <typeparam name="TSuccess"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="result"></param>
+        /// <param name="okFunc"></param>
+        public static void MatchOrThrow<TSuccess, TError>(this Result<TSuccess, TError> result, Action<TSuccess> okFunc) where TError : Exception
+        {
+            result.Match(okFunc, error => throw error);
         }
     }
 }

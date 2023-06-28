@@ -15,9 +15,15 @@ namespace RaucseTest
 
         static void Main(string[] args)
         {
-            TestingUtils.Test("Is true true", () => true == true);
-            TestingUtils.Test("Is false false", () => false == false);
-            TestingUtils.Test("Failed test test", () => true == false);
+            string str = "hello there, I am Nate";
+            StringReader reader = new StringReader(str);
+            TestingUtils.TestCatchExceptions("First", () =>
+            {
+                while (!reader.IsAtEnd())
+                    reader.Advance();
+                //ConsoleHelper.WriteMessage(reader.Previous().ToString());
+                return true;
+            });
         }
     }
 }

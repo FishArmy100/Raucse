@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/FishArmy100/Raucse</RepositoryUrl>
     <NeutralLanguage />
     <PackageTags>Utils, Util, Utilities, Functional, File Mannagement</PackageTags>
-    <Version>1.1.2</Version>
+    <Version>1.2.0</Version>
     <PackageReleaseNotes>
 		Added some diagnostics tools including Debug.Panic, Debug.Assert, and some unit test support. Added a Timer class.
 	</PackageReleaseNotes>
